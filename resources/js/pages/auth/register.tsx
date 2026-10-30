@@ -1,4 +1,5 @@
 import { Form, Head } from '@inertiajs/react';
+import { useState } from 'react';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
 import TextLink from '@/components/text-link';
@@ -8,12 +9,15 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { login } from '@/routes';
 import { store } from '@/routes/register';
+import AppLogoIcon from '@/components/app-logo-icon';
 
 type Props = {
     passwordRules: string;
 };
 
 export default function Register({ passwordRules }: Props) {
+    const [role, setRole] = useState<string>('resident');
+
     return (
         <>
             <Head title="Register" />
@@ -92,9 +96,12 @@ export default function Register({ passwordRules }: Props) {
                     {/* Compact registration card */}
                     <section className="mx-auto w-full max-w-sm rounded-2xl border border-white/70 bg-white/95 p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:mx-0 lg:max-w-md lg:p-6">
                         <div className="mb-4 text-center">
-                            <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-3xl text-emerald-800">
-                                ♻
-                            </div>
+                            {/* <AppLogoIcon className="mx-auto mb-4 h-12 w-12 fill-current text-emerald-800" /> */}
+                                <img
+                                    src="/image/wast car 3.png"
+                                    alt="Waste Management for Kombolcha Logo"
+                                    className="mx-auto mb-4 h-16 w-16 object-contain"
+                                />
 
                             <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-emerald-950">
                                 Create an Account
@@ -167,6 +174,31 @@ export default function Register({ passwordRules }: Props) {
 
                                     <div className="grid gap-1.5">
                                         <Label
+                                            htmlFor="role"
+                                            className="text-sm text-slate-800"
+                                        >
+                                            I am registering as
+                                        </Label>
+
+                                        <select
+                                            id="role"
+                                            name="role"
+                                            value={role}
+                                            onChange={(e) => setRole(e.target.value)}
+                                            required
+                                            tabIndex={3}
+                                            disabled={processing}
+                                            className="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-800 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        >
+                                            <option value="resident">Resident</option>
+                                            <option value="worker">Waste Collection Worker</option>
+                                        </select>
+
+                                        <InputError message={errors.role} />
+                                    </div>
+
+                                    <div className="grid gap-1.5">
+                                        <Label
                                             htmlFor="password"
                                             className="text-sm text-slate-800"
                                         >
@@ -176,7 +208,7 @@ export default function Register({ passwordRules }: Props) {
                                         <PasswordInput
                                             id="password"
                                             required
-                                            tabIndex={3}
+                                            tabIndex={4}
                                             autoComplete="new-password"
                                             name="password"
                                             placeholder="Password"
@@ -199,7 +231,7 @@ export default function Register({ passwordRules }: Props) {
                                         <PasswordInput
                                             id="password_confirmation"
                                             required
-                                            tabIndex={4}
+                                            tabIndex={5}
                                             autoComplete="new-password"
                                             name="password_confirmation"
                                             placeholder="Confirm password"
@@ -216,7 +248,7 @@ export default function Register({ passwordRules }: Props) {
                                     <Button
                                         type="submit"
                                         className="mt-1 h-10 w-full bg-emerald-700 font-semibold text-white hover:bg-emerald-800"
-                                        tabIndex={5}
+                                        tabIndex={6}
                                         data-test="register-user-button"
                                     >
                                         {processing && <Spinner />}
@@ -230,7 +262,7 @@ export default function Register({ passwordRules }: Props) {
                             Already have an account?{' '}
                             <TextLink
                                 href={login()}
-                                tabIndex={6}
+                                tabIndex={7}
                                 className="font-bold text-emerald-800 hover:text-emerald-950"
                             >
                                 Log in

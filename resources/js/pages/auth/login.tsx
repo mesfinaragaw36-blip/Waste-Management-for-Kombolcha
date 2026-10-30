@@ -12,6 +12,7 @@ import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
 import PasskeyVerify from '@/components/passkey-verify';
+import AppLogoIcon from '@/components/app-logo-icon';
 
 type Props = {
     status?: string;
@@ -97,9 +98,12 @@ export default function Login({ status, canResetPassword }: Props) {
                     {/* Login card */}
                     <section className="mx-auto w-full max-w-sm rounded-2xl border border-white/70 bg-white/90 p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:mx-0 lg:max-w-md lg:p-7">
                         <div className="mb-5 text-center">
-                            <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-2xl text-emerald-800">
-                                ♻
-                            </div>
+                            {/* <AppLogoIcon className="mx-auto mb-4 h-12 w-12 fill-current text-emerald-800" /> */}
+                                   <img
+                                        src="/image/wast car 3.png"
+                                        alt="Waste Management for Kombolcha Logo"
+                                        className="mx-auto mb-4 h-12 w-12 object-contain"
+                                    />
 
                             <h2 className="text-2xl font-extrabold tracking-tight text-emerald-950">
                                 Welcome Back

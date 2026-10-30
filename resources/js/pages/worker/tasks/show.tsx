@@ -52,11 +52,11 @@ export default function Show({ task }: Props) {
                     </Button>
                     <div className="flex-1">
                         <div className="flex items-center gap-3">
-                            <h1 className="text-3xl font-bold tracking-tight">Task #{task.id}</h1>
+                            <h1 className="text-2xl font-bold tracking-tight">Task #{task.id}</h1>
                             <TaskStatusBadge status={task.status} />
                         </div>
                         {report?.category && (
-                            <p className="text-muted-foreground">{report.category.name}</p>
+                            <p className="text-sm text-muted-foreground">{report.category.name}</p>
                         )}
                     </div>
                     <div className="flex gap-2">

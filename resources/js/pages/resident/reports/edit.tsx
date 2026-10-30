@@ -28,8 +28,8 @@ export default function EditReport({ report, categories }: PageProps) {
                         </Link>
                     </Button>
                     <div>
-                        <h1 className="text-3xl font-bold tracking-tight">Edit Report</h1>
-                        <p className="text-muted-foreground">
+                        <h1 className="text-2xl font-bold tracking-tight">Edit Report</h1>
+                        <p className="text-sm text-muted-foreground">
                             Update the details of your waste report
                         </p>
                     </div>

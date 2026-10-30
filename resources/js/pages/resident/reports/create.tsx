@@ -20,15 +20,15 @@ export default function CreateReport({ categories }: PageProps) {
             <Head title="Report Waste" />
 
             <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                    <Button variant="ghost" size="icon" asChild>
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+                    <Button variant="ghost" size="icon" asChild className="shrink-0 self-start">
                         <Link href={index.url()}>
                             <ArrowLeft className="size-4" />
                         </Link>
                     </Button>
-                    <div>
-                        <h1 className="text-3xl font-bold tracking-tight">Report Waste</h1>
-                        <p className="text-muted-foreground">
+                    <div className="min-w-0">
+                        <h1 className="text-2xl font-bold tracking-tight">Report Waste</h1>
+                        <p className="text-sm text-muted-foreground">
                             Submit a new waste issue report
                         </p>
                     </div>

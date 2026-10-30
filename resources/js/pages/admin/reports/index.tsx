@@ -55,8 +55,8 @@ export default function AdminReportsIndex({ reports, filters }: PageProps) {
 
             <div className="space-y-6">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Manage Reports</h1>
-                    <p className="text-muted-foreground">
+                    <h1 className="text-2xl font-bold tracking-tight">Manage Reports</h1>
+                    <p className="text-sm text-muted-foreground">
                         Review and manage all waste reports
                     </p>
                 </div>
@@ -67,14 +67,14 @@ export default function AdminReportsIndex({ reports, filters }: PageProps) {
                         <CardDescription>Search and filter reports</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <div className="grid gap-4 md:grid-cols-4">
-                            <form onSubmit={handleSearch} className="flex gap-2">
+                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                            <form onSubmit={handleSearch} className="flex gap-2 sm:col-span-2 lg:col-span-1">
                                 <Input
                                     placeholder="Search reports..."
                                     value={searchValue}
                                     onChange={(e) => setSearchValue(e.target.value)}
                                 />
-                                <Button type="submit" variant="secondary">
+                                <Button type="submit" variant="secondary" size="icon" className="shrink-0">
                                     <Search className="size-4" />
                                 </Button>
                             </form>
@@ -117,6 +117,7 @@ export default function AdminReportsIndex({ reports, filters }: PageProps) {
                                 <Button
                                     variant="outline"
                                     onClick={() => router.get(index.url())}
+                                    className="sm:col-span-2 lg:col-span-1"
                                 >
                                     Clear Filters
                                 </Button>
@@ -184,7 +185,7 @@ export default function AdminReportsIndex({ reports, filters }: PageProps) {
                         </div>
 
                         {reports.last_page > 1 && (
-                            <div className="flex items-center justify-center gap-2">
+                            <div className="flex flex-wrap items-center justify-center gap-2">
                                 {reports.links.map((link, index) => (
                                     <Button
                                         key={index}
@@ -192,6 +193,7 @@ export default function AdminReportsIndex({ reports, filters }: PageProps) {
                                         size="sm"
                                         asChild={!!link.url}
                                         disabled={!link.url}
+                                        className="min-w-[2.5rem]"
                                     >
                                         {link.url ? (
                                             <Link href={link.url}>

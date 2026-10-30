@@ -30,17 +30,17 @@ export default function ReportsIndex({ reports }: PageProps) {
             <Head title="My Reports" />
 
             <div className="space-y-6">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <h1 className="text-3xl font-bold tracking-tight">My Reports</h1>
-                        <p className="text-muted-foreground">
+                        <h1 className="text-2xl font-bold tracking-tight">My Reports</h1>
+                        <p className="text-sm text-muted-foreground">
                             View and manage your waste reports
                         </p>
                     </div>
-                    <Button asChild>
+                    <Button asChild className="shrink-0">
                         <Link href={create.url()}>
                             <Plus className="mr-2 size-4" />
-                            Report Waste
+                            <span className="sm:inline">Report Waste</span>
                         </Link>
                     </Button>
                 </div>
@@ -105,7 +105,7 @@ export default function ReportsIndex({ reports }: PageProps) {
                         </div>
 
                         {reports.last_page > 1 && (
-                            <div className="flex items-center justify-center gap-2">
+                            <div className="flex flex-wrap items-center justify-center gap-2">
                                 {reports.links.map((link, index) => (
                                     <Button
                                         key={index}
@@ -113,6 +113,7 @@ export default function ReportsIndex({ reports }: PageProps) {
                                         size="sm"
                                         asChild={!!link.url}
                                         disabled={!link.url}
+                                        className="min-w-[2.5rem]"
                                     >
                                         {link.url ? (
                                             <Link href={link.url}>

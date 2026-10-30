@@ -16,8 +16,8 @@ export default function Index({ tasks }: Props) {
 
             <div className="space-y-6">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">My Tasks</h1>
-                    <p className="text-muted-foreground">
+                    <h1 className="text-2xl font-bold tracking-tight">My Tasks</h1>
+                    <p className="text-sm text-muted-foreground">
                         View and manage your assigned collection tasks
                     </p>
                 </div>
@@ -40,16 +40,16 @@ export default function Index({ tasks }: Props) {
                 )}
 
                 {tasks.last_page > 1 && (
-                    <div className="flex items-center justify-center gap-2">
+                    <div className="flex flex-wrap items-center justify-center gap-2">
                         {tasks.links.map((link, index) => (
                             <Link
                                 key={index}
                                 href={link.url || '#'}
-                                className={`px-4 py-2 text-sm rounded-md border ${
+                                className={`min-w-[2.5rem] rounded-md border px-3 py-2 text-center text-sm ${
                                     link.active
-                                        ? 'bg-primary text-primary-foreground border-primary'
+                                        ? 'border-primary bg-primary text-primary-foreground'
                                         : 'bg-background hover:bg-accent'
-                                } ${!link.url ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                } ${!link.url ? 'cursor-not-allowed opacity-50' : ''}`}
                                 preserveScroll
                                 disabled={!link.url}
                                 dangerouslySetInnerHTML={{ __html: link.label }}

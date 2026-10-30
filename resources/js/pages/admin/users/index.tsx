@@ -53,8 +53,8 @@ export default function AdminUsersIndex({ users, filters, roles }: PageProps) {
 
             <div className="space-y-6">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Manage Users</h1>
-                    <p className="text-muted-foreground">
+                    <h1 className="text-2xl font-bold tracking-tight">Manage Users</h1>
+                    <p className="text-sm text-muted-foreground">
                         View and manage user accounts and roles
                     </p>
                 </div>

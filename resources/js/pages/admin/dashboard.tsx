@@ -33,8 +33,8 @@ export default function AdminDashboard({
 
             <div className="space-y-6">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Admin Dashboard</h1>
-                    <p className="text-muted-foreground">
+                    <h1 className="text-2xl font-bold tracking-tight">Admin Dashboard</h1>
+                    <p className="text-sm text-muted-foreground">
                         System overview and recent activity
                     </p>
                 </div>
@@ -84,7 +84,7 @@ export default function AdminDashboard({
                         <CardDescription>Current state of all waste reports</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <div className="grid gap-4 md:grid-cols-4 lg:grid-cols-7">
+                        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
                             <div className="space-y-1">
                                 <p className="text-xs text-muted-foreground">Pending</p>
                                 <p className="text-2xl font-bold">{reportMetrics.pending}</p>
@@ -124,7 +124,7 @@ export default function AdminDashboard({
                         <CardDescription>Current state of collection tasks</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+                        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5">
                             <div className="space-y-1">
                                 <p className="text-xs text-muted-foreground">Assigned</p>
                                 <p className="text-2xl font-bold">{taskMetrics.assigned}</p>

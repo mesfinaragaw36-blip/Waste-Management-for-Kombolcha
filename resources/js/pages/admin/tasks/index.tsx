@@ -59,8 +59,8 @@ export default function AdminTasksIndex({ tasks, workers, filters }: PageProps) 
 
             <div className="space-y-6">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Manage Tasks</h1>
-                    <p className="text-muted-foreground">
+                    <h1 className="text-2xl font-bold tracking-tight">Manage Tasks</h1>
+                    <p className="text-sm text-muted-foreground">
                         Monitor and manage all collection tasks
                     </p>
                 </div>

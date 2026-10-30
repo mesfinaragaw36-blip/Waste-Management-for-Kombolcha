@@ -70,8 +70,8 @@ export default function AdminShowUser({ user, roles }: PageProps) {
                         </Link>
                     </Button>
                     <div className="flex-1">
-                        <h1 className="text-3xl font-bold tracking-tight">{user.name}</h1>
-                        <p className="text-muted-foreground">{user.email}</p>
+                        <h1 className="text-2xl font-bold tracking-tight">{user.name}</h1>
+                        <p className="text-sm text-muted-foreground">{user.email}</p>
                     </div>
                     <Button onClick={() => setRoleDialogOpen(true)}>
                         <Shield className="mr-2 size-4" />

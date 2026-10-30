@@ -6,10 +6,16 @@ import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 import { Spinner } from '@/components/ui/spinner';
 import { login } from '@/routes';
 import { store } from '@/routes/register';
-import AppLogoIcon from '@/components/app-logo-icon';
 
 type Props = {
     passwordRules: string;
@@ -22,79 +28,79 @@ export default function Register({ passwordRules }: Props) {
         <>
             <Head title="Register" />
 
-            <main
-                className="fixed inset-0 z-[100] min-h-dvh w-full overflow-y-auto bg-cover bg-center bg-no-repeat"
-                style={{
-                    backgroundImage:
-                        "linear-gradient(90deg, rgba(4, 48, 35, 0.25), rgba(4, 48, 35, 0.05)), url('/images/waste-management-bg.jpg')",
-                }}
-            >
-                <div className="absolute inset-0 bg-slate-950/10" />
+            <main className="fixed inset-0 z-[100] min-h-dvh w-full overflow-y-auto bg-gradient-to-br from-slate-50 via-emerald-50/30 to-green-50/40">
+                {/* Decorative environmental SVG background */}
+                <div className="absolute inset-0 opacity-[0.07]">
+                    <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="leaves" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+                                {/* Leaf shape 1 */}
+                                <path d="M50 80 Q 60 60, 70 80 Q 60 100, 50 80" fill="currentColor" className="text-emerald-600" opacity="0.3"/>
+                                {/* Leaf shape 2 */}
+                                <path d="M120 40 Q 135 25, 150 40 Q 135 55, 120 40" fill="currentColor" className="text-green-600" opacity="0.25"/>
+                                {/* Recycling symbol */}
+                                <circle cx="30" cy="150" r="15" fill="none" stroke="currentColor" strokeWidth="2" className="text-emerald-700" opacity="0.2"/>
+                                <path d="M30 140 L 35 150 L 25 150 Z" fill="currentColor" className="text-emerald-700" opacity="0.2"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#leaves)"/>
+                    </svg>
+                </div>
+
+                {/* Subtle decorative circles */}
+                <div className="absolute top-20 right-20 h-96 w-96 rounded-full bg-emerald-100/20 blur-3xl" />
+                <div className="absolute bottom-32 left-10 h-80 w-80 rounded-full bg-green-100/15 blur-3xl" />
+                <div className="absolute top-1/3 left-1/4 h-64 w-64 rounded-full bg-slate-100/25 blur-2xl" />
 
                 <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-[1600px] flex-col justify-center gap-6 px-4 py-6 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:px-12 xl:px-20">
                     {/* Left-side project information */}
-                    <section className="hidden max-w-2xl text-white drop-shadow-md lg:block">
-                        <div className="mb-8 flex items-center gap-4">
-                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/80 text-3xl">
-                                ♻
-                            </div>
-
-                            <div>
-                                <p className="text-2xl font-bold">
-                                    Waste Management
-                                </p>
-                                <p className="text-xl font-medium">
-                                    for Kombolcha
-                                </p>
-                            </div>
-                        </div>
-
-                        <p className="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-emerald-100">
-                            Cleaner city, greener future
-                        </p>
-
-                        <h1 className="max-w-xl text-4xl leading-tight font-extrabold xl:text-6xl">
-                            A Cleaner Kombolcha Starts With You.
+                    <section className="hidden max-w-2xl lg:block">
+                        <h1 className="mb-4 text-3xl font-bold leading-tight text-slate-900">
+                            Let's Make Every Corner Clean.
                         </h1>
 
-                        <p className="mt-5 max-w-xl text-lg leading-8 text-white">
-                            Together we can improve waste management,
-                            encourage responsible disposal, and build a
-                            cleaner, healthier city for everyone.
+                        <p className="mb-8 max-w-xl text-base leading-7 text-slate-600">
+                            A cleaner environment begins with awareness and action. Report waste issues, encourage proper disposal, and become part of the positive change.
                         </p>
 
-                        <div className="mt-8 flex flex-wrap gap-8">
-                            <div>
-                                <span className="mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/20 text-xl">
-                                    ♻
-                                </span>
-                                <p className="text-sm font-semibold">
-                                    Clean Environment
-                                </p>
+                        <div className="space-y-4">
+                            <div className="flex items-start gap-3">
+                                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-xl">
+                                    📍
+                                </div>
+                                <div className="pt-1">
+                                    <p className="font-semibold text-emerald-700">
+                                        Report Local Issues
+                                    </p>
+                                </div>
                             </div>
 
-                            <div>
-                                <span className="mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/20 text-xl">
-                                    👥
-                                </span>
-                                <p className="text-sm font-semibold">
-                                    Healthy Community
-                                </p>
+                            <div className="flex items-start gap-3">
+                                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-xl">
+                                    🚮
+                                </div>
+                                <div className="pt-1">
+                                    <p className="font-semibold text-emerald-700">
+                                        Improve Collection
+                                    </p>
+                                </div>
                             </div>
 
-                            <div>
-                                <span className="mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/20 text-xl">
-                                    🌱
-                                </span>
-                                <p className="text-sm font-semibold">
-                                    Sustainable Future
-                                </p>
+                            <div className="flex items-start gap-3">
+                                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-xl">
+                                    🏘️
+                                </div>
+                                <div className="pt-1">
+                                    <p className="font-semibold text-emerald-700">
+                                        Build a Better Community
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </section>
 
                     {/* Compact registration card */}
-                    <section className="mx-auto w-full max-w-sm rounded-2xl border border-white/70 bg-white/95 p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:mx-0 lg:max-w-md lg:p-6">
+                    <section className="mx-auto w-full max-w-xs rounded-2xl border border-slate-200/50 bg-white/95 p-4 shadow-2xl backdrop-blur-sm sm:max-w-sm sm:p-5 lg:mx-0 lg:max-w-md lg:p-6">
                         <div className="mb-4 text-center">
                             {/* <AppLogoIcon className="mx-auto mb-4 h-12 w-12 fill-current text-emerald-800" /> */}
                                 <img
@@ -103,7 +109,7 @@ export default function Register({ passwordRules }: Props) {
                                     className="mx-auto mb-4 h-16 w-16 object-contain"
                                 />
 
-                            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-emerald-950">
+                            <h2 className="mt-2 text-lg font-semibold tracking-tight text-emerald-950">
                                 Create an Account
                             </h2>
 
@@ -120,14 +126,14 @@ export default function Register({ passwordRules }: Props) {
                                 'password_confirmation',
                             ]}
                             disableWhileProcessing
-                            className="flex flex-col gap-3"
+                            className="flex flex-col gap-2.5"
                         >
                             {({ processing, errors }) => (
                                 <>
-                                    <div className="grid gap-1.5">
+                                    <div className="grid gap-1">
                                         <Label
                                             htmlFor="name"
-                                            className="text-sm text-slate-800"
+                                            className="text-xs text-slate-800"
                                         >
                                             Full name
                                         </Label>
@@ -150,10 +156,10 @@ export default function Register({ passwordRules }: Props) {
                                         />
                                     </div>
 
-                                    <div className="grid gap-1.5">
+                                    <div className="grid gap-1">
                                         <Label
                                             htmlFor="email"
-                                            className="text-sm text-slate-800"
+                                            className="text-xs text-slate-800"
                                         >
                                             Email address
                                         </Label>
@@ -172,35 +178,51 @@ export default function Register({ passwordRules }: Props) {
                                         <InputError message={errors.email} />
                                     </div>
 
-                                    <div className="grid gap-1.5">
+                                    <div className="grid gap-1">
                                         <Label
                                             htmlFor="role"
-                                            className="text-sm text-slate-800"
+                                            className="text-xs text-slate-800"
                                         >
                                             I am registering as
                                         </Label>
 
-                                        <select
-                                            id="role"
-                                            name="role"
+                                        <Select
                                             value={role}
-                                            onChange={(e) => setRole(e.target.value)}
+                                            onValueChange={setRole}
+                                            name="role"
                                             required
-                                            tabIndex={3}
                                             disabled={processing}
-                                            className="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-800 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                         >
-                                            <option value="resident">Resident</option>
-                                            <option value="worker">Waste Collection Worker</option>
-                                        </select>
+                                            <SelectTrigger
+                                                id="role"
+                                                tabIndex={3}
+                                                className="h-10 w-full cursor-pointer border-slate-300 bg-white font-medium text-slate-900 shadow-sm focus-visible:border-emerald-600 focus-visible:ring-2 focus-visible:ring-emerald-500/30 focus-visible:ring-offset-0"
+                                            >
+                                                <SelectValue />
+                                            </SelectTrigger>
+                                            <SelectContent className="z-[110] border-slate-200 bg-white p-1">
+                                                <SelectItem
+                                                    value="resident"
+                                                    className="rounded-none border-0 text-slate-900 focus:bg-slate-50 focus:text-slate-900 data-[highlighted]:bg-slate-50 data-[highlighted]:text-slate-900"
+                                                >
+                                                    Resident
+                                                </SelectItem>
+                                                <SelectItem
+                                                    value="worker"
+                                                    className="rounded-none border-0 text-slate-900 focus:bg-slate-50 focus:text-slate-900 data-[highlighted]:bg-slate-50 data-[highlighted]:text-slate-900"
+                                                >
+                                                    Waste Collection Worker
+                                                </SelectItem>
+                                            </SelectContent>
+                                        </Select>
 
                                         <InputError message={errors.role} />
                                     </div>
 
-                                    <div className="grid gap-1.5">
+                                    <div className="grid gap-1">
                                         <Label
                                             htmlFor="password"
-                                            className="text-sm text-slate-800"
+                                            className="text-xs text-slate-800"
                                         >
                                             Password
                                         </Label>
@@ -220,10 +242,10 @@ export default function Register({ passwordRules }: Props) {
                                         />
                                     </div>
 
-                                    <div className="grid gap-1.5">
+                                    <div className="grid gap-1">
                                         <Label
                                             htmlFor="password_confirmation"
-                                            className="text-sm text-slate-800"
+                                            className="text-xs text-slate-800"
                                         >
                                             Confirm password
                                         </Label>
@@ -247,7 +269,7 @@ export default function Register({ passwordRules }: Props) {
 
                                     <Button
                                         type="submit"
-                                        className="mt-1 h-10 w-full bg-emerald-700 font-semibold text-white hover:bg-emerald-800"
+                                        className="mt-1 h-10 w-full bg-emerald-700 text-xs font-semibold text-white hover:bg-emerald-800"
                                         tabIndex={6}
                                         data-test="register-user-button"
                                     >
@@ -258,7 +280,7 @@ export default function Register({ passwordRules }: Props) {
                             )}
                         </Form>
 
-                        <p className="mt-4 text-center text-sm text-slate-600">
+                        <p className="mt-4 text-center text-xs text-slate-600">
                             Already have an account?{' '}
                             <TextLink
                                 href={login()}

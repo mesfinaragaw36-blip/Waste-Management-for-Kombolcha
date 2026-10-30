@@ -87,10 +87,10 @@ export default function AdminShowTask({ task, workers }: PageProps) {
                         </Link>
                     </Button>
                     <div className="flex-1">
-                        <h1 className="text-3xl font-bold tracking-tight">
+                        <h1 className="text-2xl font-bold tracking-tight">
                             Task #{task.id}
                         </h1>
-                        <p className="text-muted-foreground">
+                        <p className="text-sm text-muted-foreground">
                             {task.waste_report.title}
                         </p>
                     </div>

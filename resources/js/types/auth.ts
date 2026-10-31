@@ -8,6 +8,25 @@ export type User = {
     two_factor_enabled?: boolean;
     created_at: string;
     updated_at: string;
+    waste_reports_count?: number;
+    assigned_collection_tasks_count?: number;
+    created_collection_tasks_count?: number;
+    report_status_changes_count?: number;
+    task_status_changes_count?: number;
+    waste_reports?: Array<{
+        id: number;
+        title: string;
+        category?: { name: string } | null;
+        status: string;
+    }>;
+    assigned_collection_tasks?: Array<{
+        id: number;
+        status: string;
+        waste_report?: {
+            title?: string;
+            category?: { name: string } | null;
+        };
+    }>;
     [key: string]: unknown;
 };
 

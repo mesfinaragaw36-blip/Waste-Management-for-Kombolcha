@@ -1,3 +1,5 @@
+import type { User } from './auth';
+
 export type WasteCategory = {
     id: number;
     name: string;
@@ -10,19 +12,15 @@ export type WasteCategory = {
 export type ReportStatusHistory = {
     id: number;
     waste_report_id: number;
-    changed_by: number | null;
+    changed_by?: UserReference | null;
     old_status: string | null;
     new_status: string;
     notes: string | null;
     created_at: string;
     updated_at: string;
-    changed_by?: {
-        id: number;
-        name: string;
-        email: string;
-        role: 'resident' | 'worker' | 'administrator';
-    };
 };
+
+export type UserReference = Pick<User, 'id' | 'name' | 'email' | 'role'>;
 
 export type WasteReport = {
     id: number;
@@ -35,7 +33,14 @@ export type WasteReport = {
     latitude: string | null;
     longitude: string | null;
     priority: 'low' | 'medium' | 'high';
-    status: 'pending' | 'under_review' | 'approved' | 'assigned' | 'in_progress' | 'resolved' | 'rejected';
+    status:
+        | 'pending'
+        | 'under_review'
+        | 'approved'
+        | 'assigned'
+        | 'in_progress'
+        | 'resolved'
+        | 'rejected';
     created_at: string;
     updated_at: string;
     deleted_at: string | null;
@@ -67,25 +72,19 @@ export type PaginatedReports = {
 export type TaskStatusHistory = {
     id: number;
     collection_task_id: number;
-    changed_by: number | null;
+    changed_by?: UserReference | null;
     old_status: string | null;
     new_status: string;
     notes: string | null;
     created_at: string;
     updated_at: string;
-    changed_by?: {
-        id: number;
-        name: string;
-        email: string;
-        role: 'resident' | 'worker' | 'administrator';
-    };
 };
 
 export type CollectionTask = {
     id: number;
     waste_report_id: number;
     assigned_worker_id: number;
-    assigned_by: number;
+    assigned_by?: UserReference;
     scheduled_at: string | null;
     started_at: string | null;
     completed_at: string | null;
@@ -95,18 +94,7 @@ export type CollectionTask = {
     created_at: string;
     updated_at: string;
     waste_report?: WasteReport;
-    assigned_worker?: {
-        id: number;
-        name: string;
-        email: string;
-        role: 'resident' | 'worker' | 'administrator';
-    };
-    assigned_by?: {
-        id: number;
-        name: string;
-        email: string;
-        role: 'resident' | 'worker' | 'administrator';
-    };
+    assigned_worker?: UserReference;
     status_histories?: TaskStatusHistory[];
 };
 
@@ -123,25 +111,13 @@ export type PaginatedCollectionTasks = {
     }>;
 };
 
-export type User = {
-    id: number;
-    name: string;
-    email: string;
-    email_verified_at: string | null;
-    role: 'resident' | 'worker' | 'administrator';
-    created_at: string;
-    updated_at: string;
-    waste_reports_count?: number;
-    assigned_collection_tasks_count?: number;
-    created_collection_tasks_count?: number;
-    report_status_changes_count?: number;
-    task_status_changes_count?: number;
+export type AdminUser = User & {
     waste_reports?: WasteReport[];
     assigned_collection_tasks?: CollectionTask[];
 };
 
 export type PaginatedUsers = {
-    data: User[];
+    data: AdminUser[];
     current_page: number;
     last_page: number;
     per_page: number;
@@ -191,4 +167,3 @@ export type AdminUserMetrics = {
     workers: number;
     administrators: number;
 };
-
